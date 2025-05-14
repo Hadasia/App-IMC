@@ -9,10 +9,14 @@ export default function App() {
   const [corResultado, setCorResultado] = useState('#444');
 
   function CalcularIMC(peso, altura) {
-    if (isNaN(peso) || isNaN(altura) || altura === 0) {
-      alert("Digite peso e altura");
-      return;
-    }
+    if (
+    peso.trim() === '' || altura.trim() === '' ||       
+    isNaN(peso) || isNaN(altura) ||                     
+    Number(peso) <= 0 || Number(altura) <= 0            
+  ) {
+    alert("Digite valores numéricos positivos para peso e altura.");
+    return;
+  }
 
     if (altura > 10) {
       altura = altura / 100;
