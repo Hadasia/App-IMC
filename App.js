@@ -6,17 +6,25 @@ export default function App() {
   const [peso, setPeso] = useState('');
   const [altura, setAltura] = useState('');
   const [resultado, setResultado] = useState('');
-  const [corResultado, setCorResultado] = useState('#444');
+  const [corResultado, setCorResultado] = useState('#111');
 
   function CalcularIMC(peso, altura) {
-    if (
-    peso.trim() === '' || altura.trim() === '' ||       
-    isNaN(peso) || isNaN(altura) ||                     
-    Number(peso) <= 0 || Number(altura) <= 0            
-  ) {
-    alert("Digite numeros positivos para peso e altura.");
-    return;
-  }
+  
+    if (peso === '' || altura === '') {
+      alert('Preencha todos os campos');
+      return;
+    }
+    if (peso <= 0 || altura <= 0) {
+      alert('Preencha com valores positivos');
+      return;
+    }
+
+   if (peso === String  || altura === String) {
+         alert('Preencha com números');
+   }
+    
+    peso = parseFloat(peso);
+    altura = parseFloat(altura);
 
     if (altura > 10) {
       altura = altura / 100;
@@ -66,7 +74,7 @@ export default function App() {
       <TextInput style={styles.input} placeholder='Altura' keyboardType='numeric' value={altura} onChangeText={setAltura} />
 
       <View style={styles.botao}>
-        <Button title="Calcular IMC" onPress={() => CalcularIMC(parseFloat(peso), parseFloat(altura))} color="pink"/>
+        <Button title="Calcular IMC"onPress={() => CalcularIMC(peso, altura)} color="pink"/>
         <Button title="Limpar dados" onPress={limparDados} color="#F08080"/>
       </View>
 
