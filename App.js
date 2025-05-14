@@ -14,7 +14,7 @@ export default function App() {
     isNaN(peso) || isNaN(altura) ||                     
     Number(peso) <= 0 || Number(altura) <= 0            
   ) {
-    alert("Digite valores numéricos positivos para peso e altura.");
+    alert("Digite numeros positivos para peso e altura.");
     return;
   }
 
